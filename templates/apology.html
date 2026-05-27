@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %} — Error{% endblock %}
+
+{% block main %}
+<div class="text-center mt-5">
+    <h1 class="display-4">{{ top }}</h1>
+    <img alt="{{ bottom }}" class="img-fluid my-4" src="https://api.memegen.link/images/sad/{{ top | urlencode }}/{{ bottom | urlencode }}.png" style="max-width: 400px;"/>
+    <p class="lead">{{ bottom }}</p>
+    <a class="btn btn-primary mt-2" href="/">Go Home</a>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %} — History{% endblock %}
+
+{% block main %}
+<h2 class="mb-4">Transaction History</h2>
+
+{% if transactions %}
+<div class="table-responsive">
+    <table class="table table-sm table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Type</th>
+                <th>Symbol</th>
+                <th class="text-end">Shares</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Total</th>
+                <th>Date & Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in transactions %}
+            <tr class="{% if t.shares > 0 %}table-success{% else %}table-danger{% endif %} bg-opacity-25">
+                <td>
+                    {% if t.shares > 0 %}
+                        <span class="badge bg-success">BUY</span>
+                    {% else %}
+                        <span class="badge bg-danger">SELL</span>
+                    {% endif %}
+                </td>
+                <td><strong>{{ t.symbol }}</strong></td>
+                <td class="text-end">{{ t.shares | abs }}</td>
+                <td class="text-end">{{ t.price | usd }}</td>
+                <td class="text-end">{{ (t.price * (t.shares | abs)) | usd }}</td>
+                <td class="text-muted small">{{ t.transacted_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-info">No transactions yet.</div>
+{% endif %}
+{% endblock %}

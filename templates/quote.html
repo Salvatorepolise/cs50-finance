@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %} — Quote{% endblock %}
+
+{% block main %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <h2 class="mb-4">Get a Quote</h2>
+        <form action="/quote" method="post">
+            <div class="mb-3">
+                <label class="form-label" for="symbol">Stock Symbol</label>
+                <input autofocus class="form-control" id="symbol" name="symbol" placeholder="e.g. AAPL" type="text" required/>
+            </div>
+            <button class="btn btn-primary w-100" type="submit">Look Up</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

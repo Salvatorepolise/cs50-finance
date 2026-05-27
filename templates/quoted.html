@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %} — {{ quote.symbol }}{% endblock %}
+
+{% block main %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">{{ quote.symbol }}</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text text-muted">{{ quote.name }}</p>
+                <h2 class="card-title">{{ quote.price | usd }}</h2>
+            </div>
+            <div class="card-footer d-flex gap-2">
+                <a href="/buy" class="btn btn-success btn-sm">Buy {{ quote.symbol }}</a>
+                <a href="/quote" class="btn btn-outline-secondary btn-sm">Look Up Another</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
